@@ -5,9 +5,12 @@ import { Input } from "./ui/input";
 import { useAddColumnForm } from "@/hooks/useAddColumnForm";
 import { v4 as uuidv4 } from "uuid";
 import { ErrorMessage } from "@hookform/error-message";
+import { Button } from "./ui/button";
+import { useState } from "react";
 
 const AddColumn = () => {
   const { add } = useColumnsStore();
+  const [isOpen, setIsOpen] = useState(false);
 
   const form = useAddColumnForm();
 
@@ -15,6 +18,8 @@ const AddColumn = () => {
     const id = uuidv4();
 
     add({ id, title: title });
+
+    setIsOpen(false);
   };
 
   return (
@@ -28,6 +33,7 @@ const AddColumn = () => {
             <p>Column name</p>
             <Input maxLength={100} type="text" {...form.register("title")} />
             <ErrorMessage errors={form.formState.errors} name="title" />
+            <Button type="submit">Confirm</Button>
           </form>
         }
         title="Add column"
@@ -36,6 +42,8 @@ const AddColumn = () => {
             Add Column <CirclePlus className="ml-2" />
           </>
         }
+        isOpen={isOpen}
+        onOpen={setIsOpen}
       />
     </>
   );

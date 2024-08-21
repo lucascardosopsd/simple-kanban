@@ -3,10 +3,8 @@ import { Button } from "./ui/button";
 import { ButtonVariants } from "@/types/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -65,18 +63,6 @@ const ReusableModal = ({
         </DialogHeader>
 
         {content}
-
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-
-          <DialogClose asChild>
-            <Button type="submit">Confirm</Button>
-          </DialogClose>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
