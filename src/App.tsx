@@ -3,6 +3,9 @@ import {
   DragEndEvent,
   DragOverlay,
   DragStartEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
 } from "@dnd-kit/core";
 import "./App.css";
 import AddColumn from "./components/AddColumn";
@@ -49,9 +52,21 @@ function App() {
     setColumns(arrayMove(columns, activeColumnIndex, overColumnIdex));
   };
 
+  const pointerSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      distance: 50, //px
+    },
+  });
+
+  const sensors = useSensors(pointerSensor);
+
   return (
     <div className="flex items-center min-h-screen overflow-auto w-full px-10">
-      <DndContext onDragStart={handleOnDragStart} onDragEnd={handleOnDragEnd}>
+      <DndContext
+        onDragStart={handleOnDragStart}
+        onDragEnd={handleOnDragEnd}
+        sensors={sensors}
+      >
         <div className="flex gap-5">
           <SortableContext items={columnsId}>
             {columns.map((column) => (
