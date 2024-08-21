@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { cn } from "@/lib/utils";
 
 interface ReusableModalProps {
   trigger: string | ReactNode;
@@ -42,7 +43,7 @@ const ReusableModal = ({
     <Dialog open={isOpen} onOpenChange={onOpen}>
       <DialogTrigger asChild>
         <Button
-          className={triggerClassName}
+          className={cn("w-min", triggerClassName)}
           variant={triggerVariant}
           style={triggerStyle}
           onClick={onClick}
