@@ -10,7 +10,7 @@ function App() {
     <div className="flex items-center min-h-screen overflow-auto w-full px-10">
       <div className="flex gap-5">
         {columns.map((column) => (
-          <Column title={column.title} key={column.id} />
+          <Column id={column.id} title={column.title} key={column.id} />
         ))}
 
         <AddColumn />
