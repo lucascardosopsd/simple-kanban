@@ -1,17 +1,20 @@
 import "./App.css";
 import AddColumn from "./components/AddColumn";
+import Column from "./components/Column";
 import { useColumnsStore } from "./context/columns";
 
 function App() {
   const { columns } = useColumnsStore();
 
   return (
-    <div className="flex min-h-screen items-center overflow-auto w-full px-10">
-      <AddColumn />
+    <div className="flex items-center min-h-screen overflow-auto w-full px-10">
+      <div className="flex gap-5">
+        {columns.map((column) => (
+          <Column title={column.title} key={column.id} />
+        ))}
 
-      {columns.map((column) => (
-        <p key={column.id}>{column.title}</p>
-      ))}
+        <AddColumn />
+      </div>
     </div>
   );
 }
