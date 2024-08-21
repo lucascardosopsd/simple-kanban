@@ -1,11 +1,11 @@
 import "./App.css";
-import { Button } from "./components/ui/button";
+import AddColumn from "./components/AddColumn";
 
 function App() {
   return (
-    <>
-      <Button>OK</Button>
-    </>
+    <div className="flex min-h-screen items-center overflow-auto w-full px-10">
+      <AddColumn />
+    </div>
   );
 }
 
