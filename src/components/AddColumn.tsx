@@ -25,7 +25,8 @@ const AddColumn = () => {
   return (
     <>
       <ReusableModal
-        triggerClassName="w-60"
+        triggerClassName="w-60 hover:border-red-500 hover:bg-zinc-900!"
+        triggerVariant="outline"
         content={
           <form
             className="flex flex-col gap-2"
