@@ -16,6 +16,8 @@ import { CSS } from "@dnd-kit/utilities";
 import { useForm } from "react-hook-form";
 import { Input } from "./ui/input";
 import { toast } from "sonner";
+import { useTasksStore } from "@/context/tasks";
+import AddTask from "./AddTask";
 
 interface ColumnCardProps {
   column: ColumnProps;
@@ -25,6 +27,7 @@ const ColumnCard = ({ column }: ColumnCardProps) => {
   const { remove, update } = useColumnsStore();
   const [isOpen, setIsOpen] = useState(false);
   const form = useForm({ defaultValues: { title: "" } });
+  const { tasks } = useTasksStore();
 
   const {
     setNodeRef,
@@ -62,9 +65,10 @@ const ColumnCard = ({ column }: ColumnCardProps) => {
   }
 
   return (
-    <Card className="w-96" ref={setNodeRef} style={style}>
+    <Card className="w-72" ref={setNodeRef} style={style}>
       <CardHeader {...attributes} {...listeners} className="pt-2">
         <span className="w-1/2 mx-auto h-2 rounded-full bg-border/50 border border-white/10 cursor-grabbing" />
+
         <CardTitle className="text-sm font-normal flex justify-between items-center p-0 gap-2">
           <p className="bg-background border border-border rounded w-12 h-10 flex justify-center items-center">
             0
@@ -109,8 +113,18 @@ const ColumnCard = ({ column }: ColumnCardProps) => {
           />
         </CardTitle>
       </CardHeader>
-      <CardContent>content</CardContent>
-      <CardFooter>Footer</CardFooter>
+      <CardContent className="flex flex-col gap-5">
+        {tasks
+          .filter((task) => task.columnId == column.id)
+          .map((task) => (
+            <Card>
+              <CardHeader>{task.title}</CardHeader>
+            </Card>
+          ))}
+      </CardContent>
+      <CardFooter>
+        <AddTask columnId={column.id} />
+      </CardFooter>
     </Card>
   );
 };

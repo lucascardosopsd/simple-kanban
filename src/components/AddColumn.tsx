@@ -25,7 +25,7 @@ const AddColumn = () => {
   return (
     <>
       <ReusableModal
-        triggerClassName="w-60 hover:border-red-500 hover:bg-zinc-900!"
+        triggerClassName="w-72 hover:border-red-500 hover:bg-zinc-900!"
         triggerVariant="outline"
         content={
           <form
@@ -42,7 +42,7 @@ const AddColumn = () => {
         title="Add column"
         trigger={
           <>
-            <CirclePlus className="mr-2" /> Add Column
+            <CirclePlus className="mr-2" size={16} /> Add Column
           </>
         }
         isOpen={isOpen}
