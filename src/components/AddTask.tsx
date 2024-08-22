@@ -7,6 +7,7 @@ import { useTaskForm } from "@/hooks/useAddTaskForm";
 import { Input } from "./ui/input";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Textarea } from "./ui/textarea";
 
 const AddTask = ({ columnId }: { columnId: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,11 +29,11 @@ const AddTask = ({ columnId }: { columnId: string }) => {
           onSubmit={form.handleSubmit(handleAddTask)}
         >
           <p>Task title</p>
-          <Input maxLength={100} type="text" {...form.register("title")} />
+          <Input type="text" {...form.register("title")} />
           <ErrorMessage errors={form.formState.errors} name="title" />
 
           <p>Task content</p>
-          <Input maxLength={100} type="text" {...form.register("content")} />
+          <Textarea {...form.register("content")} />
           <ErrorMessage errors={form.formState.errors} name="content" />
 
           <Button type="submit">Confirm</Button>

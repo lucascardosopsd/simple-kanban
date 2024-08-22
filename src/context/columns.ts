@@ -7,6 +7,7 @@ interface ColumnsStoreProps {
   add: (column: ColumnProps) => void;
   remove: (id: string) => void;
   update: (data: ColumnProps) => void;
+  get: (id: string) => ColumnProps;
 }
 
 export const useColumnsStore = create<ColumnsStoreProps>((set, get) => ({
@@ -23,5 +24,8 @@ export const useColumnsStore = create<ColumnsStoreProps>((set, get) => ({
     );
 
     set({ columns: columnsUpdated });
+  },
+  get: (id) => {
+    return get().columns.filter((column) => column.id == id)[0];
   },
 }));

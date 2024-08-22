@@ -24,6 +24,7 @@ interface ReusableModalProps {
   triggerStyle?: CSSProperties;
   onClick?: () => void;
   triggerSize?: "default" | "sm" | "lg" | "icon" | null | undefined;
+  triggerAsChild?: boolean;
 }
 
 const ReusableModal = ({
@@ -38,19 +39,24 @@ const ReusableModal = ({
   triggerStyle,
   triggerSize,
   onClick,
+  triggerAsChild = true,
 }: ReusableModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpen}>
-      <DialogTrigger asChild>
-        <Button
-          className={cn("w-min", triggerClassName)}
-          variant={triggerVariant}
-          style={triggerStyle}
-          onClick={onClick}
-          size={triggerSize}
-        >
-          {trigger}
-        </Button>
+      <DialogTrigger asChild={triggerAsChild}>
+        {triggerAsChild ? (
+          <Button
+            className={cn("w-min", triggerClassName)}
+            variant={triggerVariant}
+            style={triggerStyle}
+            onClick={onClick}
+            size={triggerSize}
+          >
+            {trigger}
+          </Button>
+        ) : (
+          trigger
+        )}
       </DialogTrigger>
 
       <DialogContent>

@@ -7,6 +7,7 @@ interface ColumnsStoreProps {
   add: (task: TaskProps) => void;
   remove: (id: string) => void;
   update: (data: TaskProps) => void;
+  get: (id: string) => TaskProps;
 }
 
 export const useTasksStore = create<ColumnsStoreProps>((set, get) => ({
@@ -22,5 +23,8 @@ export const useTasksStore = create<ColumnsStoreProps>((set, get) => ({
       task.id !== data.id ? task : { ...task, ...data }
     );
     set({ tasks: tasksUpdated });
+  },
+  get: (id) => {
+    return get().tasks.filter((task) => task.id == id)[0];
   },
 }));

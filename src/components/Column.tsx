@@ -18,6 +18,7 @@ import { Input } from "./ui/input";
 import { toast } from "sonner";
 import { useTasksStore } from "@/context/tasks";
 import AddTask from "./AddTask";
+import TaskCard from "./TaskCard";
 
 interface ColumnCardProps {
   column: ColumnProps;
@@ -117,9 +118,7 @@ const ColumnCard = ({ column }: ColumnCardProps) => {
         {tasks
           .filter((task) => task.columnId == column.id)
           .map((task) => (
-            <Card>
-              <CardHeader>{task.title}</CardHeader>
-            </Card>
+            <TaskCard task={task} key={task.id} />
           ))}
       </CardContent>
       <CardFooter>

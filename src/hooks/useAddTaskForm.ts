@@ -15,8 +15,9 @@ export const useTaskForm = () => {
 export const taskValidator = z.object({
   title: z
     .string({ required_error: "Type title", invalid_type_error: "Text only" })
-    .max(100),
+    .max(100, "Max 100 char"),
   content: z
     .string({ required_error: "Type content", invalid_type_error: "Text only" })
-    .max(100),
+    .max(500, "Max 500 char")
+    .optional(),
 });
