@@ -5,6 +5,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -40,6 +41,7 @@ const ReusableModal = ({
   triggerSize,
   onClick,
   triggerAsChild = true,
+  footer,
 }: ReusableModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpen}>
@@ -70,6 +72,7 @@ const ReusableModal = ({
         </DialogHeader>
 
         {content}
+        <DialogFooter>{footer}</DialogFooter>
       </DialogContent>
     </Dialog>
   );

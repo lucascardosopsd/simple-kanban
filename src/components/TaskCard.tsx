@@ -4,6 +4,8 @@ import { Card, CardHeader } from "./ui/card";
 import { useColumnsStore } from "@/context/columns";
 import { TrashIcon } from "lucide-react";
 import { Button } from "./ui/button";
+import { useState } from "react";
+import { useTasksStore } from "@/context/tasks";
 
 interface TaskCardProps {
   task: TaskProps;
@@ -11,8 +13,14 @@ interface TaskCardProps {
 
 const TaskCard = ({ task }: TaskCardProps) => {
   const { get } = useColumnsStore();
+  const { remove } = useTasksStore();
 
-  const handleDeleteTask = () => {};
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleDeleteTask = () => {
+    remove(task.id);
+    setIsOpen(false);
+  };
 
   return (
     <ReusableModal
@@ -24,22 +32,24 @@ const TaskCard = ({ task }: TaskCardProps) => {
         </div>
       }
       trigger={
-        <Card className="hover:border-red-500 transition">
-          <CardHeader className="flex-row items-center gap-2 p-4">
+        <Card className="hover:border-red-500 transition group">
+          <CardHeader className="flex-row items-center gap-2 p-4 h-20">
             <p className="flex-1 truncate text-start">{task.title}</p>
-
-            <Button
-              onClick={handleDeleteTask}
-              size="sm"
-              variant="ghost"
-              className="text-muted"
-            >
-              <TrashIcon size={16} />
-            </Button>
           </CardHeader>
         </Card>
       }
       content={<p>{task.content}</p>}
+      footer={
+        <Button
+          onClick={handleDeleteTask}
+          variant="outline"
+          className="ml-auto gap-2"
+        >
+          Deletar <TrashIcon size={16} />
+        </Button>
+      }
+      isOpen={isOpen}
+      onOpen={setIsOpen}
     />
   );
 };

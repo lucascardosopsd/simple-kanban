@@ -94,7 +94,6 @@ const ColumnCard = ({ column }: ColumnCardProps) => {
           </div>
 
           <ReusableModal
-            triggerVariant="outline"
             content={
               <div className="flex flex-col gap-5">
                 <p>Column name: {column.title}</p>
@@ -108,6 +107,8 @@ const ColumnCard = ({ column }: ColumnCardProps) => {
               </div>
             }
             title="Delete Column"
+            triggerVariant="ghost"
+            triggerClassName="text-muted"
             trigger={<Trash size={16} />}
             isOpen={isOpen}
             onOpen={setIsOpen}
