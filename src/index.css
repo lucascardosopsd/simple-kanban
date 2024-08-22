@@ -67,3 +67,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar:horizontal {
+  @apply h-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
