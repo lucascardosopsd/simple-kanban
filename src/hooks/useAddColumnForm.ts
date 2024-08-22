@@ -7,11 +7,11 @@ export const useAddColumnForm = () => {
     defaultValues: {
       title: "",
     },
-    resolver: zodResolver(addColumnResolver),
+    resolver: zodResolver(columnValidator),
   });
 };
 
-export const addColumnResolver = z.object({
+export const columnValidator = z.object({
   title: z
     .string({ required_error: "Type title", invalid_type_error: "Text only" })
     .max(100),
