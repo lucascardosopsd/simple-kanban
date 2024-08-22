@@ -2,6 +2,8 @@ import { TaskProps } from "@/types/task";
 import ReusableModal from "./ReusableModal";
 import { Card, CardHeader } from "./ui/card";
 import { useColumnsStore } from "@/context/columns";
+import { TrashIcon } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface TaskCardProps {
   task: TaskProps;
@@ -10,7 +12,7 @@ interface TaskCardProps {
 const TaskCard = ({ task }: TaskCardProps) => {
   const { get } = useColumnsStore();
 
-  console.log(task);
+  const handleDeleteTask = () => {};
 
   return (
     <ReusableModal
@@ -23,7 +25,18 @@ const TaskCard = ({ task }: TaskCardProps) => {
       }
       trigger={
         <Card className="hover:border-red-500 transition">
-          <CardHeader>{task.title}</CardHeader>
+          <CardHeader className="flex-row items-center gap-2 p-4">
+            <p className="flex-1 truncate text-start">{task.title}</p>
+
+            <Button
+              onClick={handleDeleteTask}
+              size="sm"
+              variant="ghost"
+              className="text-muted"
+            >
+              <TrashIcon size={16} />
+            </Button>
+          </CardHeader>
         </Card>
       }
       content={<p>{task.content}</p>}
