@@ -63,7 +63,8 @@ const ColumnCard = ({ column }: ColumnCardProps) => {
 
   return (
     <Card className="w-96" ref={setNodeRef} style={style}>
-      <CardHeader {...attributes} {...listeners}>
+      <CardHeader {...attributes} {...listeners} className="pt-2">
+        <span className="w-1/2 mx-auto h-2 rounded-full bg-border/50 border border-white/10 cursor-grabbing" />
         <CardTitle className="text-sm font-normal flex justify-between items-center p-0 gap-2">
           <p className="bg-background border border-border rounded w-12 h-10 flex justify-center items-center">
             0
