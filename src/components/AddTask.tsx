@@ -32,8 +32,8 @@ const AddTask = ({ columnId }: { columnId: string }) => {
           <ErrorMessage errors={form.formState.errors} name="title" />
 
           <p>Task content</p>
-          <Input maxLength={100} type="text" {...form.register("title")} />
-          <ErrorMessage errors={form.formState.errors} name="title" />
+          <Input maxLength={100} type="text" {...form.register("content")} />
+          <ErrorMessage errors={form.formState.errors} name="content" />
 
           <Button type="submit">Confirm</Button>
         </form>
