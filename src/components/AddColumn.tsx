@@ -42,7 +42,7 @@ const AddColumn = () => {
         title="Add column"
         trigger={
           <>
-            Add Column <CirclePlus className="ml-2" />
+            <CirclePlus className="mr-2" /> Add Column
           </>
         }
         isOpen={isOpen}
